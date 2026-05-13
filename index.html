@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <base href="./" />
+  <title>Chunlong Xia | Academic Homepage</title>
+  <meta name="description" content="Chunlong Xia: Transportation Foundation Models, Multi-Agent Perception, AIGC & Spatial Intelligence." />
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --text: #10213d;
+      --muted: #4b5f82;
+      --line: #d8e3f5;
+      --primary: #2563eb;
+      --primary-soft: #eaf1ff;
+      --radius: 16px;
+      --shadow: 0 8px 30px rgba(16, 33, 61, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(180deg, #f7fbff 0%, #f4f8ff 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      width: min(1160px, 92vw);
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    .avatar {
+      width: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      min-height: 240px;
+      border: 1px solid var(--line);
+    }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 40px); line-height: 1.2; }
+    .headline {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .chip {
+      background: var(--primary-soft);
+      color: #1f4ebf;
+      border: 1px solid #cfe0ff;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .contact {
+      margin-top: 14px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .hero-meta {
+      margin-top: 8px;
+      color: #3c5685;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .section {
+      margin-top: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 20px;
+    }
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: 0.01em;
+    }
+    .section p { margin: 0; color: #273a5f; }
+
+    .exp-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .panel-card {
+      border: 1px solid #b8cdf8;
+      border-radius: 12px;
+      background: linear-gradient(180deg, #f3f8ff 0%, #f8fbff 100%);
+      padding: 12px 14px;
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.08);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .panel-title {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: #244a9e;
+    }
+    .panel-list {
+      margin: 0;
+      padding-left: 16px;
+      color: #2f4267;
+      font-size: 13px;
+    }
+    .panel-list li { margin: 5px 0; }
+    .venue-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .vtag {
+      display: inline-block;
+      border-radius: 999px;
+      font-size: 11px;
+      padding: 2px 8px;
+      border: 1px solid #cfdcf6;
+      color: #2a4a82;
+      background: #f3f7ff;
+      font-weight: 600;
+    }
+    .vtag.top { color: #8a1e00; border-color: #ffd6c8; background: #fff1ec; }
+    .vtag.journal { color: #0f5f3a; border-color: #bfe9d0; background: #ecfff3; }
+    .vtag.workshop { color: #6d4b10; border-color: #ffe6b0; background: #fff9e8; }
+    .vtag.preprint { color: #4d3f8e; border-color: #ddd3ff; background: #f4f0ff; }
+
+    .year-block { margin-top: 16px; }
+    .year-title {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: #244a9e;
+      border-left: 4px solid #7ea7ff;
+      padding-left: 10px;
+    }
+    .pub-card {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      margin-bottom: 8px;
+      background: #fcfdff;
+    }
+    .thumb {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #eef4ff;
+      aspect-ratio: 4 / 3;
+      min-height: 130px;
+    }
+    .thumb.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      color: #5d7196;
+      font-size: 12px;
+      line-height: 1.4;
+      background: repeating-linear-gradient(
+        135deg,
+        #f1f6ff,
+        #f1f6ff 10px,
+        #e9f1ff 10px,
+        #e9f1ff 20px
+      );
+    }
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .pub-content { padding: 4px 0; }
+    .pub-title {
+      margin: 0 0 4px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #10213d;
+    }
+    .pub-authors {
+      margin: 0 0 6px;
+      font-size: 12px;
+      color: #4b5f82;
+    }
+    .pub-authors strong { color: #1f4ebf; }
+    .pmi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .pmi-card {
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .pmi-card.problem {
+      background: #fff5f5;
+      border: 1px solid #ffc9c9;
+      color: #8b2020;
+    }
+    .pmi-card.method {
+      background: #f3f7ff;
+      border: 1px solid #b8cdf8;
+      color: #1f4ebf;
+    }
+    .pmi-card.impact {
+      background: #ecfff3;
+      border: 1px solid #9ceac2;
+      color: #0f5f3a;
+    }
+    .pmi-label {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      margin-bottom: 3px;
+    }
+
+    .patents-list {
+      column-count: 1;
+      font-size: 12px;
+      color: #2f4267;
+    }
+    .patents-list li {
+      margin: 4px 0;
+      break-inside: avoid;
+    }
+
+    .timeline-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #2f4267;
+      font-size: 13px;
+    }
+    .timeline-list li { margin: 5px 0; }
+
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      color: #8899b0;
+      font-size: 12px;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .avatar {
+        max-width: 180px;
+        margin: 0 auto;
+      }
+      .exp-layout {
+        grid-template-columns: 1fr;
+      }
+      .pub-card {
+        grid-template-columns: 1fr;
+      }
+      .thumb {
+        max-width: 240px;
+        margin: 0 auto;
+      }
+      .pmi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <img class="avatar" src="images/profile.png" alt="Chunlong Xia portrait" />
+      <div>
+        <h1>Chunlong Xia</h1>
+        <div class="headline">
+          Head of Transportation Large Model Technology @ Baidu
+        </div>
+        <div class="chips">
+          <span class="chip">Transportation Foundation Models</span>
+          <span class="chip">Multi-Agent Perception</span>
+          <span class="chip">AIGC & Spatial Intelligence</span>
+        </div>
+        <div class="contact">
+          Email: <a href="mailto:xiachunlong@baidu.com">xiachunlong@baidu.com</a> |
+          Google Scholar:
+          <a href="https://scholar.google.com/citations?user=6q6utA0AAAAJ&hl=zh-CN" target="_blank" rel="noreferrer">Profile</a>
+        </div>
+        <div class="hero-meta">
+          Education: M.Eng. in Pattern Recognition and Intelligent Systems, Xi'an Jiaotong University (2016–2019).<br />
+          B.Eng. in Automation, Southwest Jiaotong University (2012–2016).<br />
+          Current: Baidu (Transportation Large Model Technology). Formerly: Megvii (Face Recognition).
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>About</h2>
+      <p>
+        As the Head of Transportation Algorithms, I have been deeply engaged in the field of intelligent transportation, focusing on foundational algorithm research and large-scale industrial implementation. My research areas include vehicle-road-cloud-map integration, single-agent perception, multi-agent collaborative perception, integrated event detection systems, emergency response, and road network monitoring. Currently, my primary focus lies in cutting-edge technologies such as multimodal video understanding, intelligent data annotation, high-value data generation powered by AIGC, large model miniaturization, and spatial intelligence. I am committed to advancing deep innovation and practical applications in intelligent transportation technologies.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Experience</h2>
+      <div class="exp-layout">
+        <aside class="panel-card">
+          <h3 class="panel-title">Career Highlights</h3>
+          <ul class="panel-list">
+            <li><strong>2023.08–Present (Baidu)</strong>: Serving as the Traffic Large Model Technology Lead, driving the implementation of standardized iterative paradigms. Achieved a leap in algorithm iteration efficiency, transitioning from "workshop-style" to "factory-style" development. Led the shift from small model development paradigms to large model paradigms, while establishing a multi-agent "fast-slow system" that integrates large and small models. The algorithm's performance is industry-leading and widely applied across multiple product lines. As an industry expert, spearheaded the formulation and publication of national standards related to large road traffic models. Successfully completed the acceptance of the 2030 project as the technical lead.</li>
+            <li><strong>2020.06–Present (Baidu)</strong>: Serving as the Integrated Perception Lead for Vehicle-Road-Cloud Systems. Facilitated the paradigm shift from single-agent perception to multi-agent collaborative perception, significantly enhancing system efficiency and performance. Algorithmic developments have been successfully applied to high-level automated driving demonstration projects and other product lines.</li>
+            <li><strong>2019.07–2020.03 (Megvii)</strong>: Worked as an algorithm researcher, focusing on designing high-performance network models and implementing facial recognition algorithms. Self-developed algorithms demonstrated outstanding performance in the industry, achieving leading results.</li>
+          </ul>
+        </aside>
+        <aside class="panel-card">
+          <h3 class="panel-title">Recent Academic Updates</h3>
+          <ul class="panel-list">
+            <li>[2026] The Text2Traffic paper was accepted by AIGC2025, proposing the first unified generative model framework for image editing and image generation in the transportation field, pioneering a new direction for the industry.</li>
+            <li>[2025] RT-DETRv3 was accepted by WACV, introducing a powerful end-to-end transformer-based object detection framework, showcasing exceptional performance.</li>
+            <li>[2024] ViT-CoMer was accepted by CVPR, presenting an innovative dense backbone network model that significantly outperforms current industry standards.</li>
+            <li>[2023] Open-TransMind was accepted by CVPRW, proposing a foundational large-model framework for the transportation field, supporting multi-task joint optimization and multimodal retrieval, and advancing the development of transportation models.</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Representative Research Works</h2>
+      <p style="color:#50658d;margin-bottom:10px;">
+        All papers are rendered from Scholar export in reverse chronological order, with unified Problem / Method / Impact cards.
+      </p>
+      <div id="all-research"></div>
+    </section>
+
+    <section class="section">
+      <h2>Patents</h2>
+      <ul class="patents-list" id="patents"></ul>
+    </section>
+
+    <section class="section">
+      <h2>Standards & Specifications</h2>
+      <div style="margin-bottom:16px;">
+        <h4 style="margin:0 0 8px;color:#244a9e;">National Standards (GB/T) (selected)</h4>
+        <ul class="timeline-list">
+          <li><span style="color:#92400e;background:#fef3c7;padding:2px 6px;border-radius:4px;font-size:11px;">Under Development</span> Artificial Intelligence – General Requirements for Service Capabilities of Road Traffic Large Model Systems</li>
+          <li><span style="color:#065f46;background:#d1fae5;padding:2px 6px;border-radius:4px;font-size:11px;">Published</span> Artificial Intelligence – Terminal Intelligence Grading, Part 7: Automotive Cockpit</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:16px;">
+        <h4 style="margin:0 0 8px;color:#244a9e;">Industry Standards (selected)</h4>
+        <ul class="timeline-list">
+          <li><span style="color:#065f46;background:#d1fae5;padding:2px 6px;border-radius:4px;font-size:11px;">Published</span> Technical Requirements for Roadside Computing Equipment in Vehicle-Road Synergy</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:16px;">
+        <h4 style="margin:0 0 8px;color:#244a9e;">Group Standards (selected)</h4>
+        <ul class="timeline-list">
+          <li><span style="color:#92400e;background:#fef3c7;padding:2px 6px;border-radius:4px;font-size:11px;">Under Development</span> Evaluation Specification for Roadside Infrastructure Message Functions in Vehicle-Road-Cloud Integration, Part 1: Traffic Signals & Maps</li>
+          <li><span style="color:#92400e;background:#fef3c7;padding:2px 6px;border-radius:4px;font-size:11px;">Under Development</span> Vehicle-Road Synergy Roadside Infrastructure, Part 3: RSU Technical Requirements & Test Methods</li>
+          <li><span style="color:#92400e;background:#fef3c7;padding:2px 6px;border-radius:4px;font-size:11px;">Under Development</span> Vehicle-Road Synergy Edge Computing Facilities, Part 2: Operating System</li>
+          <li><span style="color:#92400e;background:#fef3c7;padding:2px 6px;border-radius:4px;font-size:11px;">Under Development</span> Vehicle-Road-Cloud Integration System, Part 2: Vehicle-Cloud Data Interaction Specification</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Professional Service</h2>
+      <div style="margin-bottom:16px;">
+        <h4 style="margin:0 0 8px;color:#244a9e;">Journal Reviewer (selected)</h4>
+        <ul class="timeline-list">
+          <li>International Journal of Computer Vision (IJCV)</li>
+          <li>IEEE Transactions on Multimedia (TMM)</li>
+        </ul>
+      </div>
+      <div style="margin-bottom:16px;">
+        <h4 style="margin:0 0 8px;color:#244a9e;">Conference Reviewer (selected)</h4>
+        <ul class="timeline-list">
+          <li>CVPR, ICCV, ECCV, NeurIPS, AAAI, ACM MM</li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="margin:0 0 8px;color:#244a9e;">Workshop Organizer</h4>
+        <ul class="timeline-list">
+          <li>CVPR 2023 Foundation Model Challenge: 1st Intelligent Transportation Foundation Model Challenge</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      Last updated: 2026-05-13 · Full list rendered from Scholar export
+    </footer>
+  </div>
+
+  <script>
+    const publications = [
+      {
+        year: 2026,
+        papers: [
+          {
+            title: "MPCFormer: A Physics-informed Data-driven Approach for Explainable Socially-aware Autonomous Driving",
+            authors: "Jia Hu, Zhexi Lian, Xuerun Yan, Ruiang Bi, Dou Shen, Yu Ruan, <strong>Chunlong Xia</strong>, Haoran Wang",
+            venue: "arXiv Preprint 2026",
+            venueType: "preprint",
+            image: "images/mpcformer.png",
+            problem: "Autonomous vehicles lack understanding of underlying social interaction dynamics in high-density traffic, leading to overly conservative and unsafe planning.",
+            method: "Proposed MPCFormer, which learns explicit multi-vehicle social interaction dynamics via Transformer and embeds them as core constraints in a Stackelberg game-based Model Predictive Control (MPC) planner.",
+            impact: "Reduced 5s-horizon trajectory prediction error to 0.86m, increased closed-loop planning success rate to 94.67%, and slashed collision rate from 21.25% to 0.5%.",
+            scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=6q6utA0AAAAJ&citation_for_view=6q6utA0AAAAJ:_FxGoFyzp5QC"
+          }
+        ]
+      },
+      {
+        year: 2025,
+        papers: [
+          {
+            title: "Text2Traffic: A Text-to-Image Generation and Editing Method for Traffic Scenes",
+            authors: "Feng Lv, Haoxuan Feng, Zilu Zhang, <strong>Chunlong Xia</strong>, Yanfeng Li",
+            venue: "AIGC 2025 (Oral Presentation)",
+            venueType: "top",
+            image: "images/text2traffic.png",
+            problem: "Existing text-to-image methods for traffic suffer from poor semantic richness, limited viewpoints, low visual fidelity, and weak text-image alignment.",
+            method: "Unified generation and editing via controllable masking mechanism, integrated multi-view vehicle/roadside data, and employed two-stage training strategy (coarse concept learning + fine-grained description tuning) with mask-weighted loss.",
+            impact: "Achieved leading performance in traffic scene generation/editing, significantly improving small-object detail, semantic alignment, and cross-view consistency. Generated data usability reached 74.6%.",
+            scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=6q6utA0AAAAJ&citation_for_view=6q6utA0AAAAJ:eQOLeE2rZwMC"
+          },
+          {
+            title: "RT-DATR: Real-time Unsupervised Domain Adaptive Detection Transformer with Adversarial Feature Alignment",
+            authors: "Feng Lv, <strong>Chunlong Xia</strong>, Shuo Wang, Huo Cao",
+            venue: "arXiv:2504.09196v2",
+            venueType: "preprint",
+            image: "images/rt-datr.png",
+            problem: "Domain adaptation techniques designed for CNNs fail to transfer efficiently to real-time Transformers, causing latency spikes and suboptimal cross-domain accuracy.",
+            method: "Introduced three training-only adversarial feature alignment modules (object-level, scene-semantic, and decoupled instance) with domain queries and consistency loss, enabling zero-latency cross-domain adaptation.",
+            impact: "Achieved SOTA accuracy across weather, scene, sim-to-real, and cross-camera benchmarks while fully preserving baseline's 158 FPS real-time inference speed."
+          },
+          {
+            title: "RT-DETRv3: Real-Time End-to-End Object Detection with Hierarchical Dense Positive Supervision",
+            authors: "Shuo Wang, <strong>Chunlong Xia</strong>, Feng Lv, Yifeng Shi",
+            venue: "WACV 2025 (Oral Presentation)",
+            venueType: "top",
+            image: "images/rt-detrv3.png",
+            problem: "Hungarian matching in original RT-DETR causes sparse supervision signals, slow convergence, and accuracy bottlenecks.",
+            method: "Designed training-only hierarchical dense supervision mechanism using CNN auxiliary branch, self-attention perturbation, and shared-weight one-to-many decoding branch.",
+            impact: "Achieved SOTA on COCO val2017: RT-DETRv3-R18 reached 48.1% AP (+1.6% at identical latency), and R101 reached 54.6% AP, surpassing YOLOv10-X.",
+            scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=6q6utA0AAAAJ&citation_for_view=6q6utA0AAAAJ:W7OEmFMy1HYC"
+          }
+        ]
+      },
+      {
+        year: 2024,
+        papers: [
+          {
+            title: "ViT-CoMer: Vision Transformer with Convolutional Multi-scale Feature Interaction for Dense Predictions",
+            authors: "<strong>Chunlong Xia</strong>, Xinliang Wang, Feng Lv, Xin Hao, Yifeng Shi",
+            venue: "CVPR 2024 (Spotlight)",
+            venueType: "top",
+            image: "images/vit-comer.png",
+            problem: "Vanilla ViTs lack local inductive bias and multi-scale features, limiting dense prediction tasks without costly re-pretraining.",
+            method: "Integrated multi-receptive-field feature pyramid and bidirectional CNN-Transformer interaction module, fully compatible with off-the-shelf pre-trained ViT weights.",
+            impact: "Delivered leading/comparable SOTA on COCO (64.3% AP) and ADE20K (62.1% mIoU), significantly outperforming adapted plain/hybrid backbones.",
+            scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=6q6utA0AAAAJ&citation_for_view=6q6utA0AAAAJ:Tyk-4Ss8FVUC"
+          }
+        ]
+      },
+      {
+        year: 2023,
+        papers: [
+          {
+            title: "Open-TransMind: A New Baseline and Benchmark for 1st Foundation Model Challenge of Intelligent Transportation",
+            authors: "Yifeng Shi, Feng Lv, Xinliang Wang, <strong>Chunlong Xia</strong>, Shaojie Li, Shujie Yang, Teng Xi, Gang Zhang",
+            venue: "CVPR Workshops 2023",
+            venueType: "workshop",
+            image: "images/open-transmind.png",
+            problem: "ITS AI faces few-shot learning limitations, poor generalization, and lack of unified multi-modal foundation models.",
+            method: "Proposed first open-source multi-task, multi-modal traffic foundation model benchmark with unified and cross-modal image retrieval tracks.",
+            impact: "Achieved SOTA in detection, classification, and segmentation for traffic scenes, establishing first open-source multi-modal foundation model for intelligent transportation.",
+            scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=6q6utA0AAAAJ&citation_for_view=6q6utA0AAAAJ:UeHWp8X0CEIC"
+          }
+        ]
+      },
+      {
+        year: 2022,
+        papers: [
+          {
+            title: "RepMLP: Re-parameterizing Convolutions into Fully-connected Layers for Image Recognition",
+            authors: "Xiaohan Ding, <strong>Chunlong Xia</strong>, Xiangyu Zhang, Xiaojie Chu, Jungong Han, Guiguang Ding",
+            venue: "arXiv:2105.01883v3",
+            venueType: "preprint",
+            image: "images/repmlp.png",
+            problem: "Pure MLPs lack local structural inductive bias, underperforming CNNs in vision tasks.",
+            method: "Introduced RepMLP modules with parallel convolutional/BN branches during training, structurally re-parameterized into fully-connected layers for inference at zero computational cost.",
+            impact: "Pure MLPs matched CNNs on CIFAR; integrated into ResNet, boosted ImageNet accuracy by 1.8%, face recognition by 2.9%, and Cityscapes mIoU by 2.3%, with reduced FLOPs and faster inference.",
+            scholarUrl: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=6q6utA0AAAAJ&citation_for_view=6q6utA0AAAAJ:u5HHmVD_uO8C"
+          }
+        ]
+      }
+    ];
+
+    const patents = [
+      { year: 2026, items: [
+        "Model Training Method, Apparatus, and Electronic Device",
+        "Classification Model and Training Method, Apparatus, and Device for Vehicle Image Classification"
+      ]},
+      { year: 2025, items: [
+        "Image Feature Fusion and Model Training Method, Apparatus, Device, and Computer-Readable Storage Medium",
+        "Large Model-Based Method and Apparatus for Abnormal Parking Detection in Highway Scenarios",
+        "Text-Image Dual-Controlled Method for Image Sample Generation in Highway Scenarios",
+        "Method and Apparatus for Object Detection Result Processing and Object Detection Model Acquisition",
+        "Image Detection Method, Apparatus, Electronic Device, and Computer-Readable Storage Medium"
+      ]},
+      { year: 2024, items: [
+        "Object Detection Method, Apparatus, and Roadside Equipment for Vehicle-Road Cooperative Systems",
+        "Object Detection Method, Apparatus, Roadside Equipment, and Vehicle for Vehicle-Road Collaboration",
+        "Object Detection Method, Apparatus, Electronic Device, Roadside Equipment, and Cloud Control Platform",
+        "Method for Training Separable Convolutional Networks, Roadside Equipment, and Cloud Control Platform",
+        "Image Classification Model Training Method, Classification Method, Roadside Equipment, and Cloud Control Platform",
+        "Method for Image Processing and Convolution Kernel Generation, Roadside Equipment, and Cloud Control Platform"
+      ]},
+      { year: 2023, items: [
+        "Sample Image Processing Method, Apparatus, Electronic Device, and Computer-Readable Storage Medium",
+        "Object Detection Method, Apparatus, Roadside Equipment, and Cloud Control Platform",
+        "Object Detection Method, Apparatus, and Roadside Equipment for Vehicle-Road Collaboration",
+        "Truncated Object Sample Generation and Object Detection Method, Roadside Equipment, and Cloud Control Platform",
+        "Method for Generating Image Classification Models, Roadside Equipment, and Cloud Control Platform",
+        "Object Detection Method, Electronic Device, and Computer-Readable Storage Medium"
+      ]}
+    ];
+
+    function getVenueClass(type) {
+      const map = {
+        'top': 'vtag top',
+        'journal': 'vtag journal',
+        'workshop': 'vtag workshop',
+        'preprint': 'vtag preprint'
+      };
+      return map[type] || 'vtag';
+    }
+
+    function renderPublications() {
+      const container = document.getElementById('all-research');
+      let html = '';
+
+      publications.forEach(yearBlock => {
+        html += `<div class="year-block">
+          <h3 class="year-title">${yearBlock.year}</h3>`;
+
+        yearBlock.papers.forEach(paper => {
+          const imgHtml = paper.image
+            ? `<div class="thumb"><img src="${paper.image}" alt="${paper.title}" /></div>`
+            : `<div class="thumb placeholder">Paper Figure</div>`;
+
+          const scholarLink = paper.scholarUrl
+            ? ` | <a href="${paper.scholarUrl}" target="_blank" rel="noreferrer">Scholar</a>`
+            : '';
+
+          html += `
+            <div class="pub-card">
+              ${imgHtml}
+              <div class="pub-content">
+                <div class="venue-tags">
+                  <span class="${getVenueClass(paper.venueType)}">${paper.venue}</span>
+                </div>
+                <h4 class="pub-title">${paper.title}</h4>
+                <div class="pub-authors">${paper.authors}${scholarLink}</div>
+                <div class="pmi-grid">
+                  <div class="pmi-card problem">
+                    <div class="pmi-label">Problem</div>
+                    ${paper.problem}
+                  </div>
+                  <div class="pmi-card method">
+                    <div class="pmi-label">Method</div>
+                    ${paper.method}
+                  </div>
+                  <div class="pmi-card impact">
+                    <div class="pmi-label">Impact</div>
+                    ${paper.impact}
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        });
+
+        html += '</div>';
+      });
+
+      container.innerHTML = html;
+    }
+
+    function renderPatents() {
+      const container = document.getElementById('patents');
+      let html = '';
+      patents.forEach(yearBlock => {
+        html += `<li style="font-weight:600;color:#244a9e;list-style:none;margin-top:12px;">${yearBlock.year}</li>`;
+        yearBlock.items.forEach(item => {
+          html += `<li>${item}</li>`;
+        });
+      });
+      container.innerHTML = html;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderPublications();
+      renderPatents();
+    });
+  </script>
+</body>
+</html>
