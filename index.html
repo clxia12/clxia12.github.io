@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <base href="./" />
   <title>Chunlong Xia | Academic Homepage</title>
   <meta name="description" content="Chunlong Xia: Transportation Foundation Models, Multi-Agent Perception, AIGC & Spatial Intelligence." />
   <style>
@@ -99,6 +98,61 @@
       padding: 8px 16px;
       font-size: 13px;
       box-shadow: var(--shadow);
+    }
+
+    /* 导航栏样式 */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+      margin-bottom: 16px;
+    }
+    .navbar-inner {
+      width: min(1160px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+    }
+    .navbar-nav {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    .navbar-nav li a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .navbar-nav li a:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .navbar-nav li a.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 60px;
     }
 
     .section {
@@ -309,6 +363,28 @@
       .pmi-grid {
         grid-template-columns: 1fr;
       }
+      /* 移动端导航栏 */
+      .navbar-inner {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+      }
+      .navbar-brand {
+        font-size: 16px;
+      }
+      .navbar-nav {
+        justify-content: center;
+        gap: 2px;
+      }
+      .navbar-nav li a {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+      .lang-switch {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+      }
     }
   </style>
 </head>
@@ -316,6 +392,21 @@
   <div class="lang-switch">
     <a href="index_cn.html">中文</a>
   </div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <span class="navbar-brand">Chunlong Xia</span>
+      <ul class="navbar-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#patents">Patents</a></li>
+        <li><a href="#standards">Standards</a></li>
+        <li><a href="#service">Service</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="wrap">
     <section class="hero">
@@ -343,14 +434,14 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="about">
       <h2>About</h2>
       <p>
         As the Head of Transportation Algorithms, I have been deeply engaged in the field of intelligent transportation, focusing on foundational algorithm research and large-scale industrial implementation. My research areas include vehicle-road-cloud-map integration, single-agent perception, multi-agent collaborative perception, integrated event detection systems, emergency response, and road network monitoring. Currently, my primary focus lies in cutting-edge technologies such as multimodal video understanding, intelligent data annotation, high-value data generation powered by AIGC, large model miniaturization, and spatial intelligence. I am committed to advancing deep innovation and practical applications in intelligent transportation technologies.
       </p>
     </section>
 
-    <section class="section">
+    <section class="section" id="experience">
       <h2>Experience</h2>
       <div class="exp-layout">
         <aside class="panel-card">
@@ -373,7 +464,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="research">
       <h2>Representative Research Works</h2>
       <p style="color:#50658d;margin-bottom:10px;">
         All papers are rendered from Scholar export in reverse chronological order, with unified Problem / Method / Impact cards.
@@ -381,12 +472,12 @@
       <div id="all-research"></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="patents">
       <h2>Patents</h2>
-      <ul class="patents-list" id="patents"></ul>
+      <ul class="patents-list" id="patents-list"></ul>
     </section>
 
-    <section class="section">
+    <section class="section" id="standards">
       <h2>Standards & Specifications</h2>
       <div style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;color:#244a9e;">National Standards (GB/T) (selected)</h4>
@@ -412,7 +503,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="service">
       <h2>Professional Service</h2>
       <div style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;color:#244a9e;">Journal Reviewer (selected)</h4>
@@ -636,7 +727,7 @@
     }
 
     function renderPatents() {
-      const container = document.getElementById('patents');
+      const container = document.getElementById('patents-list');
       let html = '';
       patents.forEach(yearBlock => {
         html += `<li style="font-weight:600;color:#244a9e;list-style:none;margin-top:12px;">${yearBlock.year}</li>`;

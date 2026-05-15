@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <base href="./" />
   <title>夏春龙 | 个人主页</title>
   <meta name="description" content="夏春龙: 交通大模型、多智能体感知、AIGC与空间智能。" />
   <style>
@@ -99,6 +98,61 @@
       padding: 8px 16px;
       font-size: 13px;
       box-shadow: var(--shadow);
+    }
+
+    /* 导航栏样式 */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      padding: 0;
+      margin-bottom: 16px;
+    }
+    .navbar-inner {
+      width: min(1160px, 92vw);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+    }
+    .navbar-nav {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
+    .navbar-nav li a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+    .navbar-nav li a:hover {
+      background: var(--primary-soft);
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .navbar-nav li a.active {
+      background: var(--primary-soft);
+      color: var(--primary);
+    }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 60px;
     }
 
     .section {
@@ -309,6 +363,28 @@
       .pmi-grid {
         grid-template-columns: 1fr;
       }
+      /* 移动端导航栏 */
+      .navbar-inner {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+      }
+      .navbar-brand {
+        font-size: 16px;
+      }
+      .navbar-nav {
+        justify-content: center;
+        gap: 2px;
+      }
+      .navbar-nav li a {
+        padding: 5px 8px;
+        font-size: 12px;
+      }
+      .lang-switch {
+        top: auto;
+        bottom: 10px;
+        right: 10px;
+      }
     }
   </style>
 </head>
@@ -316,6 +392,21 @@
   <div class="lang-switch">
     <a href="index.html">English</a>
   </div>
+
+  <!-- 导航栏 -->
+  <nav class="navbar">
+    <div class="navbar-inner">
+      <span class="navbar-brand">夏春龙</span>
+      <ul class="navbar-nav">
+        <li><a href="#about">关于我</a></li>
+        <li><a href="#experience">工作经历</a></li>
+        <li><a href="#research">研究成果</a></li>
+        <li><a href="#patents">专利</a></li>
+        <li><a href="#standards">标准</a></li>
+        <li><a href="#service">专业服务</a></li>
+      </ul>
+    </div>
+  </nav>
 
   <div class="wrap">
     <section class="hero">
@@ -343,14 +434,14 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="about">
       <h2>关于我</h2>
       <p>
         作为交通算法负责人，我深耕智能交通领域，聚焦于基础算法研究与大规模产业化落地。我的研究方向涵盖车路云图一体化技术、单智能体感知、多智能体协同感知、事件一体化检测系统、应急处置以及路网监测等核心技术。当前，我的工作重心聚焦于多模态视频理解、智能数据标注、基于AIGC的高价值数据生成、大模型小型化，以及空间智能等前沿技术领域，致力于推动智能交通技术的深度创新与实际应用。
       </p>
     </section>
 
-    <section class="section">
+    <section class="section" id="experience">
       <h2>工作经历</h2>
       <div class="exp-layout">
         <aside class="panel-card">
@@ -373,7 +464,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="research">
       <h2>代表性研究成果</h2>
       <p style="color:#50658d;margin-bottom:10px;">
         所有论文按时间倒序排列，统一采用问题/解决方案/效果卡片形式展示。
@@ -381,12 +472,12 @@
       <div id="all-research"></div>
     </section>
 
-    <section class="section">
+    <section class="section" id="patents">
       <h2>专利</h2>
-      <ul class="patents-list" id="patents"></ul>
+      <ul class="patents-list" id="patents-list"></ul>
     </section>
 
-    <section class="section">
+    <section class="section" id="standards">
       <h2>标准与规范</h2>
       <div style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;color:#244a9e;">国家标准 (GB/T)（选择）</h4>
@@ -412,7 +503,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="service">
       <h2>专业服务</h2>
       <div style="margin-bottom:16px;">
         <h4 style="margin:0 0 8px;color:#244a9e;">期刊审稿人（选择）</h4>
@@ -636,7 +727,7 @@
     }
 
     function renderPatents() {
-      const container = document.getElementById('patents');
+      const container = document.getElementById('patents-list');
       let html = '';
       patents.forEach(yearBlock => {
         html += `<li style="font-weight:600;color:#244a9e;list-style:none;margin-top:12px;">${yearBlock.year}</li>`;
